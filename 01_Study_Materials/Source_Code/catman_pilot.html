@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Judgments About People and Change — Research Study</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#FAFAF8;
+  --ink:#1C1F21;
+  --ink-soft:#5A6166;
+  --rule:#DCDCD6;
+  --rule-soft:#EAEAE5;
+  --accent:#2F6F6B;
+  --accent-soft:#E4EFEE;
+  --warn:#8A4B2A;
+  --measure:34rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+}
+.wrap{max-width:var(--measure);margin:0 auto;padding:2rem 1.25rem 6rem}
+
+/* progress: unnumbered ticks, so participants aren't anchored by position */
+.progress{
+  position:sticky;top:0;z-index:10;
+  background:var(--paper);
+  padding:.9rem 1.25rem .7rem;
+  border-bottom:1px solid var(--rule-soft);
+}
+.ticks{display:flex;gap:4px;max-width:var(--measure);margin:0 auto}
+.tick{height:3px;flex:1;background:var(--rule);border-radius:2px;transition:background .3s}
+.tick.done{background:var(--accent)}
+.tick.current{background:var(--accent);opacity:.45}
+
+h1{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.6rem;line-height:1.25;font-weight:600;
+  margin:0 0 1rem;letter-spacing:-.01em;
+}
+h2{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.2rem;font-weight:600;margin:2rem 0 .6rem;
+}
+.eyebrow{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-soft);font-weight:600;margin:0 0 .5rem;
+}
+p{margin:0 0 1rem}
+.muted{color:var(--ink-soft);font-size:.9rem}
+
+/* vignette: serif, boxed, so it reads as the stimulus and not as instructions */
+.vignette{
+  font-family:"Source Serif 4",Georgia,serif;
+  font-size:1.06rem;line-height:1.72;
+  background:#fff;
+  border:1px solid var(--rule);
+  border-left:3px solid var(--accent);
+  padding:1.4rem 1.4rem .5rem;
+  margin:0 0 2rem;
+}
+.vignette p{margin:0 0 1rem}
+
+.item{padding:1.15rem 0;border-top:1px solid var(--rule-soft)}
+.item:first-of-type{border-top:1px solid var(--rule)}
+.stem{margin:0 0 .8rem}
+.scale{display:flex;gap:2px}
+.opt{flex:1;position:relative}
+.opt input{position:absolute;opacity:0;width:100%;height:100%;margin:0;cursor:pointer}
+.opt span{
+  display:block;text-align:center;
+  padding:.55rem .1rem;font-size:.85rem;font-variant-numeric:tabular-nums;
+  border:1px solid var(--rule);background:#fff;
+  cursor:pointer;user-select:none;
+  transition:background .12s,border-color .12s;
+}
+.opt:first-child span{border-radius:4px 0 0 4px}
+.opt:last-child span{border-radius:0 4px 4px 0}
+.opt input:checked + span{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.opt input:focus-visible + span{outline:2px solid var(--accent);outline-offset:2px}
+.opt:hover span{background:var(--accent-soft)}
+.opt input:checked:hover + span{background:var(--accent)}
+.anchors{display:flex;justify-content:space-between;margin-top:.4rem;gap:1rem}
+.anchors span{font-size:.75rem;color:var(--ink-soft);line-height:1.3}
+.anchors span:last-child{text-align:right}
+
+label.free{display:block;margin:.4rem 0}
+textarea,input[type=text]{
+  width:100%;font:inherit;font-size:.95rem;padding:.6rem .7rem;
+  border:1px solid var(--rule);border-radius:4px;background:#fff;color:var(--ink);
+}
+textarea{min-height:5.5rem;resize:vertical}
+input[type=text]:focus,textarea:focus{outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent)}
+
+.choices{display:flex;flex-direction:column;gap:.35rem}
+.choice{display:flex;align-items:flex-start;gap:.6rem;padding:.5rem .7rem;border:1px solid var(--rule);border-radius:4px;background:#fff;cursor:pointer}
+.choice:hover{background:var(--accent-soft)}
+.choice input{margin:.28rem 0 0}
+.choice.sel{border-color:var(--accent);background:var(--accent-soft)}
+
+button{
+  font:inherit;font-weight:600;font-size:.95rem;
+  background:var(--accent);color:#fff;border:0;border-radius:4px;
+  padding:.75rem 1.6rem;cursor:pointer;
+}
+button:hover{filter:brightness(1.08)}
+button:disabled{background:var(--rule);color:var(--ink-soft);cursor:not-allowed;filter:none}
+button:focus-visible{outline:2px solid var(--ink);outline-offset:2px}
+.nav{margin-top:2.2rem;display:flex;align-items:center;gap:1rem}
+.err{color:var(--warn);font-size:.88rem;margin:0}
+
+.note{background:#fff;border:1px solid var(--rule);border-radius:4px;padding:1rem 1.1rem;font-size:.9rem}
+.note ul{margin:.4rem 0 0;padding-left:1.1rem}
+.note li{margin:.25rem 0}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.85em;background:var(--rule-soft);padding:.1em .35em;border-radius:3px}
+.hidden{display:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+@media (max-width:420px){
+  .opt span{font-size:.8rem;padding:.5rem .05rem}
+  .vignette{padding:1.1rem 1rem .3rem;font-size:1rem}
+}
+</style>
+</head>
+<body>
+
+<div class="progress"><div class="ticks" id="ticks"></div></div>
+<div class="wrap" id="app"></div>
+
+<script>
+/* ============================================================
+   Cat-Man Pilot  —  configuration
+   ============================================================ */
+
+const CONFIG = {
+  // Paste the Apps Script Web App URL here (ends with /exec)
+  ENDPOINT: "https://script.google.com/macros/s*****************/exec",
+  STUDY: "catman_pilot_v1",
+  // Prolific completion URL. Participants arriving without a PROLIFIC_PID
+  // never see the return button, so local testing is unaffected.
+  COMPLETION_URL: "https://app.prolific.com/submissions/complete?cc=************",
+  // Shown on the consent and debrief screens. Replace before going live.
+  CONTACT: "************@************.************"
+};
+
+/* ---------- vignette parts ---------- */
+
+const FRAME = {
+  relationship:
+    "X and Y have been close friends for twenty years. They speak often, know each other's habits, and have made a number of promises to each other over that time.",
+  device:
+    "X enters a device. At the start of processing, the device makes a complete record of X's state."
+};
+
+const TRANSITION = {
+  continuous:
+    "The processing inside the device never came to a complete stop. The state of the individual inside the device changed continuously from the beginning of processing to the end. No separate processing or individual was ever started from the record that had been made.",
+  discontinuous:
+    "After the record was made, the device completely stopped the processing that had been maintaining the individual inside it. After that processing had stopped, the device used the stored record to start new processing, and this produced the final individual. At no time were two processes running simultaneously."
+};
+
+const SUB   = { human:"has the same human body X had before entering the device",
+                cat:"has the body of a cat" };
+const INFO  = { retain:"It retains all of the memories X had before entering the device.",
+                lost:"It has none of the memories X had before entering the device." };
+const FUNC  = { retain:"It can speak and carry out everyday activities as X could before.",
+                limited:"It cannot speak. It can convey its intentions only by typing, and its everyday activities are restricted." };
+const SELF  = { affirm:"It states that it is X.",
+                uncertain:"It states that it does not know whether it is X.",
+                deny:"It states that it is not X." };
+
+function standardVignette(c){
+  return [
+    FRAME.relationship,
+    FRAME.device,
+    TRANSITION[c.transition],
+    "When processing ends, the individual that comes out of the device " + SUB[c.sub] + ". "
+      + INFO[c.info] + " " + FUNC[c.func] + " " + SELF[c.self_id]
+  ];
+}
+
+const PARALLEL_VIGNETTE = [
+  FRAME.relationship,
+  "X enters a device. The device makes a complete record of X's state. After that, no further processing is carried out on X. X leaves the device with the same human body as before, and has gone on living as before.",
+  "Separately, the device uses the stored record to start new processing, and this produces a second individual. This individual has the body of a cat. It retains all of the memories X had up to the moment the record was made. It can speak and carry out everyday activities as X could before. It states that it is X.",
+  "Both individuals now exist at the same time."
+];
+
+/* ---------- conditions ---------- */
+
+const CONDITIONS = [
+  {id:"C01", sub:"human", info:"retain", func:"retain", self_id:"affirm",    transition:"continuous",    role:"standard", purpose:"baseline"},
+  {id:"C02", sub:"cat",   info:"retain", func:"retain", self_id:"affirm",    transition:"continuous",    role:"standard", purpose:"substrate"},
+  {id:"C03", sub:"human", info:"lost",   func:"retain", self_id:"affirm",    transition:"continuous",    role:"standard", purpose:"memory"},
+  {id:"C04", sub:"human", info:"retain", func:"limited",self_id:"affirm",    transition:"continuous",    role:"standard", purpose:"function"},
+  {id:"C05", sub:"human", info:"retain", func:"retain", self_id:"uncertain", transition:"continuous",    role:"standard", purpose:"selfID"},
+  {id:"C06", sub:"human", info:"retain", func:"retain", self_id:"affirm",    transition:"discontinuous", role:"standard", purpose:"transition"},
+  {id:"C07", sub:"cat",   info:"retain", func:"retain", self_id:"affirm",    transition:"discontinuous", role:"standard", purpose:"transition x substrate"},
+  {id:"C08", sub:"human", info:"lost",   func:"retain", self_id:"affirm",    transition:"discontinuous", role:"standard", purpose:"transition x memory"},
+  {id:"A09", sub:"human", info:"retain", func:"retain", self_id:"deny",      transition:"continuous",    role:"anchor",   purpose:"self-denial anchor"},
+  {id:"A10", sub:"cat",   info:"retain", func:"retain", self_id:"affirm",    transition:"parallel",      role:"anchor",   purpose:"parallel duplicate anchor"}
+];
+
+/* ---------- item sets ---------- */
+
+const L7 = {min:"Strongly disagree", mid:"Neither", max:"Strongly agree"};
+
+const ITEMS = {
+
+  manipulation_standard:[
+    {k:"pc_sub",  t:"The individual that came out of the device has the same physical body as X had before."},
+    {k:"pc_info", t:"The individual that came out of the device holds the memories X had before."},
+    {k:"pc_func", t:"The individual that came out of the device can do the things X could do before."},
+    {k:"pc_self", t:"The individual that came out of the device experiences itself as a continuation of X."},
+    {k:"pc_tran", t:"From before processing to after processing, one uninterrupted process continued."}
+  ],
+
+  manipulation_transition_extra:[
+    {k:"k_copy",  t:"The individual that came out of the device feels like something made from a record."},
+    {k:"k_term",  t:"The X who existed before processing feels as though they ceased to exist at some point."}
+  ],
+
+  manipulation_parallel_extra:[
+    {k:"k_copy",  t:"The individual with the cat body feels like something made from a record."},
+    {k:"k_term",  t:"The X who existed before the record was made feels as though they ceased to exist at some point."},
+    {k:"k_coex",  t:"Two individuals exist at the same time in this situation."}
+  ],
+
+  judgment_standard:[
+    {k:"j_identity",     t:"The individual that came out of the device is the same person as the X who entered it."},
+    {k:"j_likeness",     t:"The individual that came out of the device seems like X."},
+    {k:"j_relationship", t:"The friendship between Y and X is continuing with this individual."},
+    {k:"j_obligation",   t:"The promises X made to Y before entering the device should be kept by this individual."},
+    {k:"j_treatment",    t:"The people around this individual should treat it as X."}
+  ],
+
+  judgment_deny_extra:[
+    {k:"v_epistemic", t:"This individual saying \u201cI am not X\u201d is strong evidence that it is not the same person as X."},
+    {k:"v_normative", t:"Even if the other details point to continuity with X, the people around this individual should not treat it as X against its own stated wishes."}
+  ],
+
+  judgment_parallel_extra:[
+    {k:"j_ab", t:"The individual with the human body is the same person as the X who entered the device."},
+    {k:"j_ac", t:"The individual with the cat body is the same person as the X who entered the device."},
+    {k:"j_bc", t:"The individual with the human body and the individual with the cat body are the same person as each other."},
+    {k:"j_excl",t:"Being the same person as the X who entered the device can hold for only one of these two individuals."}
+  ]
+};
+
+function itemsFor(cond, arm){
+  if (arm === "manipulation"){
+    if (cond.transition === "parallel")
+      return ITEMS.manipulation_parallel_extra.concat(
+        ITEMS.manipulation_standard.map(i =>
+          i.k === "pc_tran" ? {k:"pc_tran", t:"From before the record was made to after processing, one uninterrupted process continued."} : i));
+    let base = ITEMS.manipulation_standard.slice();
+    if (cond.transition === "discontinuous") base = base.concat(ITEMS.manipulation_transition_extra);
+    return base;
+  }
+  if (cond.transition === "parallel") return ITEMS.judgment_parallel_extra.concat(ITEMS.judgment_standard.slice(2));
+  let base = ITEMS.judgment_standard.slice();
+  if (cond.self_id === "deny") base = base.concat(ITEMS.judgment_deny_extra);
+  return base;
+}
+
+/* ============================================================
+   State
+   ============================================================ */
+
+/* URL parameters.
+   Assign arm from the recruitment platform:
+     ?arm=manipulation   or   ?arm=judgment
+   Prolific passes PROLIFIC_PID, STUDY_ID and SESSION_ID automatically
+   when the study URL includes them as query parameters. */
+const QS = new URLSearchParams(location.search);
+const QS_ARM = (QS.get("arm") || "").toLowerCase();
+const PRESET_ARM = (QS_ARM === "manipulation" || QS_ARM === "judgment") ? QS_ARM : null;
+const PRESET_PID = QS.get("PROLIFIC_PID") || QS.get("pid") || "";
+
+const S = {
+  pid:"", arm:"", order:[], step:0,
+  source: PRESET_PID ? "platform" : "manual",
+  prolific_study: QS.get("STUDY_ID") || "",
+  prolific_session: QS.get("SESSION_ID") || "",
+  startedAt:new Date().toISOString(),
+  consent:false, responses:{}, freetext:{}, demo:{}, attention:null,
+  screens:[]
+};
+
+function shuffle(a){const x=a.slice();for(let i=x.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]];}return x;}
+
+function buildOrder(){
+  const std = shuffle(CONDITIONS.filter(c=>c.role==="standard"));
+  const anc = shuffle(CONDITIONS.filter(c=>c.role==="anchor"));
+  // anchors are placed only in the second half, so extreme cue conflicts
+  // do not anchor the response scale for the standard conditions
+  const slots = shuffle([4,5,6,7,8,9]).slice(0,2).sort((a,b)=>a-b);
+  const out = new Array(10).fill(null);
+  slots.forEach((s,i)=>{ out[s] = anc[i]; });
+  let k = 0;
+  for (let i=0;i<10;i++) if (!out[i]) out[i] = std[k++];
+  return out;
+}
+
+/* ============================================================
+   Rendering
+   ============================================================ */
+
+const app = document.getElementById("app");
+const ticksEl = document.getElementById("ticks");
+
+function drawTicks(){
+  const total = S.screens.length || 1;
+  ticksEl.innerHTML = "";
+  for (let i=0;i<total;i++){
+    const d = document.createElement("div");
+    d.className = "tick" + (i < S.step ? " done" : i === S.step ? " current" : "");
+    ticksEl.appendChild(d);
+  }
+}
+
+function likert(name, stem){
+  const opts = [1,2,3,4,5,6,7].map(v =>
+    `<label class="opt"><input type="radio" name="${name}" value="${v}"><span>${v}</span></label>`).join("");
+  return `<div class="item" data-req="${name}">
+    <p class="stem">${stem}</p>
+    <div class="scale">${opts}</div>
+    <div class="anchors"><span>1 &mdash; ${L7.min}</span><span>4 &mdash; ${L7.mid}</span><span>7 &mdash; ${L7.max}</span></div>
+  </div>`;
+}
+
+function go(n){ S.step = n; render(); window.scrollTo({top:0,behavior:"instant"}); }
+
+function collectLikert(prefix){
+  const box = {};
+  app.querySelectorAll('.item[data-req]').forEach(it=>{
+    const name = it.dataset.req;
+    const sel = app.querySelector(`input[name="${name}"]:checked`);
+    if (sel) box[name] = Number(sel.value);
+  });
+  return box;
+}
+
+function missing(){
+  const miss = [];
+  app.querySelectorAll('.item[data-req]').forEach(it=>{
+    if (!app.querySelector(`input[name="${it.dataset.req}"]:checked`)) miss.push(it);
+  });
+  return miss;
+}
+
+/* ---------- screens ---------- */
+
+function scrConsent(){
+  app.innerHTML = `
+    <p class="eyebrow">Research study</p>
+    <h1>Judgments about people and change</h1>
+    <p>This study asks how people think about short descriptions of unusual situations. There are no right or wrong answers &mdash; we are interested in your own reactions.</p>
+    <div class="note">
+      <strong>Before you start</strong>
+      <ul>
+        <li>The study takes about 12&ndash;18 minutes.</li>
+        <li>You will read ten short scenarios and answer a few questions after each one.</li>
+        <li>The scenarios are fictional and involve no distressing content.</li>
+        <li>Your answers are anonymous. We record only your responses and your participant ID.</li>
+        <li>You can close the page at any point to stop taking part.</li>
+        <li>Questions? Contact the researchers at <a href="mailto:${CONFIG.CONTACT}">${CONFIG.CONTACT}</a>.</li>
+      </ul>
+    </div>
+    <h2>Your participant ID</h2>
+    ${PRESET_PID
+      ? `<p class="muted">Your ID has been carried over from the recruitment platform.</p>
+         <input type="text" id="pid" value="${PRESET_PID.replace(/"/g,"&quot;")}" readonly>`
+      : `<p class="muted">Enter the ID given to you by the recruitment platform. If you do not have one, enter any short label you will remember.</p>
+         <input type="text" id="pid" placeholder="e.g. 5f2c9a1b" autocomplete="off">`}
+    <div class="choices" style="margin-top:1.4rem">
+      <label class="choice" id="cs">
+        <input type="checkbox" id="consent">
+        <span>I am 18 or older, I have read the information above, and I agree to take part.</span>
+      </label>
+    </div>
+    <div class="nav"><button id="next" disabled>Start</button><p class="err" id="err"></p></div>`;
+
+  const pid = document.getElementById("pid"),
+        cb  = document.getElementById("consent"),
+        btn = document.getElementById("next");
+  const upd = () => {
+    document.getElementById("cs").classList.toggle("sel", cb.checked);
+    btn.disabled = !(cb.checked && pid.value.trim().length > 0);
+  };
+  pid.addEventListener("input", upd); cb.addEventListener("change", upd);
+  btn.onclick = () => {
+    S.pid = pid.value.trim(); S.consent = true;
+    S.arm = PRESET_ARM || (Math.random() < 0.5 ? "manipulation" : "judgment");
+    S.order = buildOrder();
+    S.screens = ["instr"].concat(S.order.map((c,i)=>"v"+i)).concat(["attention","demo","done"]);
+    go(0);
+  };
+}
+
+function scrInstructions(){
+  const isMan = S.arm === "manipulation";
+  app.innerHTML = `
+    <p class="eyebrow">Instructions</p>
+    <h1>How this works</h1>
+    <p>You will read ten short scenarios. Each one describes a person, <strong>X</strong>, and a long-time friend, <strong>Y</strong>.</p>
+    <p>In each scenario, X goes through some kind of process. The details differ from scenario to scenario, so please read each one carefully &mdash; they are similar but not the same.</p>
+    <p>${isMan
+      ? "After each scenario you will be asked how the situation appears to you: what stayed the same, what changed, and what happened during the process."
+      : "After each scenario you will be asked what you think about the situation: whether it is still the same person, how the friendship stands, and how the individual should be treated."}</p>
+    <div class="note">Please answer based on the scenario as written. Where a detail is not mentioned, answer as seems most natural to you.</div>
+    <div class="nav"><button id="next">Continue</button></div>`;
+  document.getElementById("next").onclick = () => go(1);
+}
+
+function scrVignette(idx){
+  const c = S.order[idx];
+  const paras = (c.transition === "parallel" ? PARALLEL_VIGNETTE : standardVignette(c));
+  const items = itemsFor(c, S.arm);
+  const key = k => c.id + "__" + k;
+
+  app.innerHTML = `
+    <p class="eyebrow">Scenario ${idx+1} of 10</p>
+    <div class="vignette">${paras.map(p=>`<p>${p}</p>`).join("")}</div>
+    ${items.map(i => likert(key(i.k), i.t)).join("")}
+    <div class="item">
+      <p class="stem">Anything you want to add about this scenario? <span class="muted">(optional)</span></p>
+      <textarea id="ft" placeholder="Optional"></textarea>
+    </div>
+    <div class="nav"><button id="next">Continue</button><p class="err" id="err"></p></div>`;
+
+  document.getElementById("next").onclick = () => {
+    const miss = missing();
+    if (miss.length){
+      document.getElementById("err").textContent =
+        `Please answer all ${miss.length === 1 ? "the remaining question" : miss.length + " remaining questions"}.`;
+      miss[0].scrollIntoView({block:"center", behavior:"smooth"});
+      return;
+    }
+    Object.assign(S.responses, collectLikert());
+    const ft = document.getElementById("ft").value.trim();
+    if (ft) S.freetext[c.id] = ft;
+    go(S.step + 1);
+  };
+}
+
+function scrAttention(){
+  app.innerHTML = `
+    <p class="eyebrow">One more thing</p>
+    <h1>A quick check</h1>
+    <p>To confirm you have been reading the scenarios, please answer this:</p>
+    <div class="item" style="border-top:1px solid var(--rule)">
+      <p class="stem">In the scenarios you read, what body did the individual sometimes end up with?</p>
+      <div class="choices" id="ac">
+        ${["The body of a cat","The body of a bird","No body at all","A mechanical body"]
+          .map((o,i)=>`<label class="choice"><input type="radio" name="att" value="${i}"><span>${o}</span></label>`).join("")}
+      </div>
+    </div>
+    <div class="nav"><button id="next">Continue</button><p class="err" id="err"></p></div>`;
+  app.querySelectorAll("#ac .choice").forEach(l =>
+    l.addEventListener("click", () => {
+      app.querySelectorAll("#ac .choice").forEach(x=>x.classList.remove("sel"));
+      l.classList.add("sel");
+    }));
+  document.getElementById("next").onclick = () => {
+    const s = app.querySelector('input[name="att"]:checked');
+    if (!s){ document.getElementById("err").textContent = "Please choose one option."; return; }
+    S.attention = Number(s.value);
+    go(S.step + 1);
+  };
+}
+
+function scrDemo(){
+  app.innerHTML = `
+    <p class="eyebrow">About you</p>
+    <h1>Three short questions</h1>
+    <p class="muted">These help us describe who took part. You can skip any of them.</p>
+    <div class="item" style="border-top:1px solid var(--rule)">
+      <p class="stem">Age</p>
+      <input type="text" id="age" inputmode="numeric" placeholder="e.g. 34" autocomplete="off">
+    </div>
+    <div class="item">
+      <p class="stem">Gender</p>
+      <div class="choices" id="g">
+        ${["Woman","Man","Non-binary","Prefer not to say"]
+          .map(o=>`<label class="choice"><input type="radio" name="gen" value="${o}"><span>${o}</span></label>`).join("")}
+      </div>
+    </div>
+    <div class="item">
+      <p class="stem">Have you studied philosophy, psychology, or cognitive science beyond an introductory level?</p>
+      <div class="choices" id="b">
+        ${["Yes","No","Prefer not to say"]
+          .map(o=>`<label class="choice"><input type="radio" name="bg" value="${o}"><span>${o}</span></label>`).join("")}
+      </div>
+    </div>
+    <div class="item">
+      <p class="stem">Any thoughts on the study as a whole? <span class="muted">(optional)</span></p>
+      <textarea id="ftall" placeholder="Optional"></textarea>
+    </div>
+    <div class="nav"><button id="next">Submit answers</button><p class="err" id="err"></p></div>`;
+
+  ["#g","#b"].forEach(sel => app.querySelectorAll(sel+" .choice").forEach(l =>
+    l.addEventListener("click", () => {
+      app.querySelectorAll(sel+" .choice").forEach(x=>x.classList.remove("sel"));
+      l.classList.add("sel");
+    })));
+
+  document.getElementById("next").onclick = async (e) => {
+    const btn = e.target;
+    S.demo.age = document.getElementById("age").value.trim();
+    const g = app.querySelector('input[name="gen"]:checked');
+    const b = app.querySelector('input[name="bg"]:checked');
+    S.demo.gender = g ? g.value : "";
+    S.demo.background = b ? b.value : "";
+    const all = document.getElementById("ftall").value.trim();
+    if (all) S.freetext["overall"] = all;
+    btn.disabled = true; btn.textContent = "Sending\u2026";
+    const ok = await submit();
+    if (!ok){
+      btn.disabled = false; btn.textContent = "Submit answers";
+      document.getElementById("err").textContent = "Could not send. Check your connection and try again.";
+      return;
+    }
+    go(S.step + 1);
+  };
+}
+
+function scrDone(){
+  const viaPlatform = S.source === "platform" && CONFIG.COMPLETION_URL;
+  app.innerHTML = `
+    <p class="eyebrow">Complete</p>
+    <h1>Thank you</h1>
+    <p>Your answers have been recorded.</p>
+    <p>This study looks at what people rely on when they judge whether someone is still the same person after a major change &mdash; their body, their memories, how the change happened, or what they say about themselves. The scenarios were designed to pull those apart, which is why they were unusual.</p>
+    <p class="muted">If you have any questions about this study, you can contact the researchers at <a href="mailto:${CONFIG.CONTACT}">${CONFIG.CONTACT}</a>.</p>
+    ${viaPlatform
+      ? `<div class="nav"><button id="back">Return to Prolific</button></div>
+         <p class="muted" id="auto">Returning automatically in a few seconds&hellip;</p>`
+      : `<p class="muted">You can now close this page.</p>`}`;
+  ticksEl.querySelectorAll(".tick").forEach(t => t.className = "tick done");
+
+  if (viaPlatform){
+    const back = document.getElementById("back");
+    back.onclick = () => { location.href = CONFIG.COMPLETION_URL; };
+    setTimeout(() => { location.href = CONFIG.COMPLETION_URL; }, 5000);
+  }
+}
+
+function render(){
+  const s = S.screens.length ? S.screens[S.step] : "consent";
+  if (!S.consent){ ticksEl.innerHTML = ""; return scrConsent(); }
+  drawTicks();
+  if (s === "instr") return scrInstructions();
+  if (s === "attention") return scrAttention();
+  if (s === "demo") return scrDemo();
+  if (s === "done") return scrDone();
+  if (s.startsWith("v")) return scrVignette(Number(s.slice(1)));
+}
+
+/* ============================================================
+   Submit
+   ============================================================ */
+
+function payload(){
+  return {
+    study: CONFIG.STUDY,
+    participant_id: S.pid,
+    arm: S.arm,
+    arm_assignment: PRESET_ARM ? "url" : "random",
+    id_source: S.source,
+    prolific_study: S.prolific_study,
+    prolific_session: S.prolific_session,
+    started_at: S.startedAt,
+    finished_at: new Date().toISOString(),
+    presentation_order: S.order.map(c => c.id).join("|"),
+    attention_pass: S.attention === 0 ? 1 : 0,
+    attention_choice: S.attention,
+    age: S.demo.age,
+    gender: S.demo.gender,
+    background: S.demo.background,
+    user_agent: navigator.userAgent,
+    responses: S.responses,
+    freetext: S.freetext
+  };
+}
+
+async function submit(){
+  if (CONFIG.ENDPOINT.indexOf("PASTE_YOUR") === 0){
+    console.warn("No endpoint set. Payload:", payload());
+    return true; // allows local testing without a backend
+  }
+  try{
+    await fetch(CONFIG.ENDPOINT, {
+      method:"POST",
+      mode:"no-cors",
+      headers:{"Content-Type":"text/plain;charset=utf-8"},
+      body: JSON.stringify(payload())
+    });
+    return true;
+  }catch(err){
+    console.error(err);
+    return false;
+  }
+}
+
+render();
+</script>
+</body>
+</html>
