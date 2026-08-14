@@ -1,0 +1,1 @@
+Exact deployed study source. Operational submission endpoint, Prolific completion code, and contact address were redacted. Participant-facing text, condition definitions, item wording, and presentation-order logic were otherwise preserved.
