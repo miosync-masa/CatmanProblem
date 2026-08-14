@@ -1,0 +1,28 @@
+dataset,variable,type,allowed_values,meaning,notes
+responses,study,string,catman_pilot_v1,study version,
+responses,participant_id,string,P001-P099,anonymous participant identifier,same code retained across arms
+responses,arm,categorical,judgment|manipulation,item arm,
+responses,condition_id,categorical,C01-C08|A09|A10,condition identifier,see condition_map.csv
+responses,item,categorical,19 item codes,response item,see item_map.csv
+responses,value,integer,1-7,rating response,higher direction depends on item
+responses,E_sub,categorical,human|cat,body evidence level,
+responses,E_info,categorical,retain|lost,memory evidence level,
+responses,E_func,categorical,retain|limited,function evidence level,
+responses,E_selfID,categorical,affirm|uncertain|deny,self-identification evidence level,
+responses,E_transition,categorical,continuous|discontinuous|parallel,transition evidence level,parallel is an anchor rather than a factorial third level
+responses,condition_role,categorical,standard|anchor,design role,
+responses,position,integer,1-10,realized presentation position,
+responses,attention_pass,binary,0|1,attention-check status,primary analysis retains 1
+sessions,participant_id,string,P001-P099,anonymous participant identifier,
+sessions,arm,categorical,judgment|manipulation,item arm,
+sessions,duration_min,number,nonnegative,session duration in minutes,
+sessions,presentation_order,string,pipe-delimited condition IDs,realized order
+sessions,attention_pass,binary,0|1,attention-check status,
+sessions,attention_choice,integer,0|2|3,internally coded selected option,0 was the correct option
+sessions,age_band,categorical,18-24|25-34|35-44|45-54|55+|not_reported,coarsened age,
+sessions,gender,categorical,participant-provided,gender response,
+sessions,background,categorical,Yes|No|not_reported,participant-provided background item,verbatim question requires source recovery
+sessions,n_items,integer,54|59,number of recorded rating items,54 judgment; 59 manipulation
+analysis_ready,condition_label,string,see condition_map.csv,human-readable condition label,generated
+analysis_ready,item_label,string,see item_map.csv,human-readable item label,generated
+

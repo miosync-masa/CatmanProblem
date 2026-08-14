@@ -1,0 +1,10 @@
+condition_id,condition_label,item,item_label,n,mean,sd,median
+A10,Parallel anchor,k_coex,Coexistence,50,6.580000,0.835195,7.000000
+A10,Parallel anchor,k_copy,Copy-likeness,50,4.380000,2.448573,5.500000
+A10,Parallel anchor,k_term,Termination,50,2.620000,2.088745,1.500000
+C06,Transition,k_copy,Copy-likeness,50,4.180000,2.125549,4.000000
+C06,Transition,k_term,Termination,50,4.060000,2.093820,4.000000
+C07,Body + transition,k_copy,Copy-likeness,50,4.380000,1.978352,5.000000
+C07,Body + transition,k_term,Termination,50,4.260000,2.018385,4.000000
+C08,Memory + transition,k_copy,Copy-likeness,50,4.520000,2.052773,5.000000
+C08,Memory + transition,k_term,Termination,50,4.240000,1.911939,4.000000

@@ -1,0 +1,13 @@
+n,n_queries,statistic,permutations,exceedances,p_permutation,sample,condition_id,contrast,p_fdr_within_sample
+49,5,1.562182,100000,0,0.000010,attention_pass,C02,Body,0.000060
+49,5,1.190837,100000,21,0.000220,attention_pass,C03,Memory,0.000660
+49,5,0.223740,100000,21793,0.217938,attention_pass,C04,Function,0.261525
+49,5,0.510954,100000,808,0.008090,attention_pass,C05,Self-ID uncertain,0.016140
+49,5,0.049479,100000,63871,0.638714,attention_pass,C06,Transition,0.638714
+49,5,0.662557,100000,1075,0.010760,attention_pass,A09,Self-denial anchor,0.016140
+51,5,1.433295,100000,0,0.000010,all_judgment,C02,Body,0.000060
+51,5,1.070819,100000,57,0.000580,all_judgment,C03,Memory,0.001740
+51,5,0.207920,100000,22840,0.228408,all_judgment,C04,Function,0.274089
+51,5,0.430142,100000,1803,0.018040,all_judgment,C05,Self-ID uncertain,0.027060
+51,5,0.038447,100000,73303,0.733033,all_judgment,C06,Transition,0.733033
+51,5,0.679277,100000,622,0.006230,all_judgment,A09,Self-denial anchor,0.012460

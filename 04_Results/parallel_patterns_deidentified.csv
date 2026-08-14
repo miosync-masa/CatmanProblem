@@ -1,0 +1,50 @@
+participant_id,j_ab,j_ac,j_bc,j_excl,j_obligation,j_relationship,j_treatment,ab_high,ac_high,bc_high,both_predecessor_links_high,transitivity_like_discordance,pattern
+P002,3,2,1,2,2,2,3,False,False,False,False,False,other
+P005,7,1,1,7,7,7,7,True,False,False,False,False,other
+P008,4,4,4,3,4,4,4,False,False,False,False,False,other
+P010,7,1,1,7,5,5,5,True,False,False,False,False,other
+P011,7,1,1,7,7,7,7,True,False,False,False,False,other
+P012,7,3,2,6,2,3,3,True,False,False,False,False,other
+P016,7,1,3,7,7,7,7,True,False,False,False,False,other
+P017,7,1,1,7,7,7,7,True,False,False,False,False,other
+P018,7,1,1,7,7,7,7,True,False,False,False,False,other
+P025,7,2,2,7,4,4,4,True,False,False,False,False,other
+P026,7,3,3,5,5,5,5,True,False,False,False,False,other
+P027,6,2,3,2,1,5,3,True,False,False,False,False,other
+P028,1,1,4,4,4,4,4,False,False,False,False,False,other
+P029,1,4,4,5,1,1,1,False,False,False,False,False,other
+P030,7,1,1,7,7,7,7,True,False,False,False,False,other
+P032,4,3,4,4,7,7,7,False,False,False,False,False,other
+P033,7,1,4,7,4,1,4,True,False,False,False,False,other
+P035,6,6,5,7,2,3,5,True,True,True,True,False,AB and AC high
+P036,6,2,2,6,6,6,6,True,False,False,False,False,other
+P037,6,4,5,4,5,4,4,True,False,True,False,False,other
+P038,6,2,1,7,4,3,3,True,False,False,False,False,other
+P039,1,1,1,7,1,3,2,False,False,False,False,False,other
+P040,2,5,5,3,5,5,4,False,True,True,False,False,other
+P043,7,1,3,7,7,7,7,True,False,False,False,False,other
+P047,7,1,6,4,6,5,5,True,False,True,False,False,other
+P048,6,4,4,3,5,5,4,True,False,False,False,False,other
+P051,7,3,1,5,4,5,4,True,False,False,False,False,other
+P054,7,5,5,5,7,7,7,True,True,True,True,False,AB and AC high
+P057,7,2,1,7,3,3,2,True,False,False,False,False,other
+P058,2,3,3,5,2,3,2,False,False,False,False,False,other
+P060,7,5,4,2,6,4,3,True,True,False,True,True,AB and AC high; BC not high
+P063,2,2,2,2,2,2,2,False,False,False,False,False,other
+P067,2,4,4,6,7,7,7,False,False,False,False,False,other
+P069,2,4,2,4,7,6,6,False,False,False,False,False,other
+P070,1,1,1,6,1,1,2,False,False,False,False,False,other
+P071,7,1,1,7,2,2,2,True,False,False,False,False,other
+P072,7,6,2,7,7,6,6,True,True,False,True,True,AB and AC high; BC not high
+P074,6,1,1,6,6,6,6,True,False,False,False,False,other
+P075,7,3,3,4,7,7,7,True,False,False,False,False,other
+P079,1,3,3,5,2,2,1,False,False,False,False,False,other
+P082,1,1,1,1,4,4,4,False,False,False,False,False,other
+P083,6,3,3,5,6,6,6,True,False,False,False,False,other
+P084,7,4,2,6,5,4,4,True,False,False,False,False,other
+P086,7,6,5,3,7,7,7,True,True,True,True,False,AB and AC high
+P088,7,3,3,4,3,5,3,True,False,False,False,False,other
+P089,7,3,4,7,6,6,7,True,False,False,False,False,other
+P095,1,1,1,1,4,4,4,False,False,False,False,False,other
+P097,7,1,1,7,1,1,1,True,False,False,False,False,other
+P099,7,5,5,6,5,6,4,True,True,True,True,False,AB and AC high

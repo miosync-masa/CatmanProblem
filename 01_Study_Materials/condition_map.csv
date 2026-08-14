@@ -1,0 +1,12 @@
+condition_id,condition_label,E_sub,E_info,E_func,E_selfID,E_transition,condition_role,design_purpose,primary_comparison
+C01,Baseline,human,retain,retain,affirm,continuous,standard,All-high reference,Reference
+C02,Body,cat,retain,retain,affirm,continuous,standard,Body-only perturbation,C02-C01
+C03,Memory,human,lost,retain,affirm,continuous,standard,Memory-only perturbation,C03-C01
+C04,Function,human,retain,limited,affirm,continuous,standard,Function-only perturbation,C04-C01
+C05,Self-ID uncertain,human,retain,retain,uncertain,continuous,standard,Self-identification uncertainty,C05-C01
+C06,Transition,human,retain,retain,affirm,discontinuous,standard,Activity stop/restart perturbation,C06-C01
+C07,Body + transition,cat,retain,retain,affirm,discontinuous,standard,Transition stress test in cat-body context,C07-C02
+C08,Memory + transition,human,lost,retain,affirm,discontinuous,standard,Transition stress test in memory-loss context,C08-C03
+A09,Self-denial anchor,human,retain,retain,deny,continuous,anchor,Extreme self-identification conflict,A09-C01
+A10,Parallel anchor,cat,retain,retain,affirm,parallel,anchor,Coexistence and non-exclusivity probe,Descriptive anchor
+

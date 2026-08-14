@@ -1,0 +1,21 @@
+item,arm,construct,scale_min,scale_max,higher_value_means,availability,verbatim_status
+pc_sub,manipulation,perceived body continuity,1,7,greater perceived continuity,all conditions,exact deployed wording pending source recovery
+pc_info,manipulation,perceived memory continuity,1,7,greater perceived continuity,all conditions,exact deployed wording pending source recovery
+pc_func,manipulation,perceived functional continuity,1,7,greater perceived continuity,all conditions,exact deployed wording pending source recovery
+pc_self,manipulation,perceived self-continuity,1,7,greater perceived continuity,all conditions,exact deployed wording pending source recovery
+pc_tran,manipulation,perceived transition continuity,1,7,greater perceived continuity,all conditions,exact deployed wording pending source recovery
+k_copy,manipulation,copy-likeness,1,7,stronger copy interpretation,C06/C07/C08/A10,exact deployed wording pending source recovery
+k_term,manipulation,termination,1,7,stronger termination interpretation,C06/C07/C08/A10,exact deployed wording pending source recovery
+k_coex,manipulation,coexistence,1,7,stronger coexistence interpretation,A10 only,exact deployed wording pending source recovery
+j_identity,judgment,same-person judgment,1,7,stronger same-person endorsement,C01-C08/A09,exact deployed wording pending source recovery
+j_likeness,judgment,likeness judgment,1,7,stronger likeness endorsement,C01-C08/A09,exact deployed wording pending source recovery
+j_relationship,judgment,relationship continuation,1,7,stronger continuation endorsement,all conditions,exact deployed wording pending source recovery
+j_obligation,judgment,obligation continuation,1,7,stronger continuation endorsement,all conditions,exact deployed wording pending source recovery
+j_treatment,judgment,treatment as X,1,7,stronger treatment-as-X endorsement,all conditions,exact deployed wording pending source recovery
+v_epistemic,judgment,epistemic self-report veto,1,7,stronger evidential-veto endorsement,A09 only,concept verified; exact deployed wording pending
+v_normative,judgment,normative self-determination veto,1,7,stronger normative-veto endorsement,A09 only,concept verified; exact deployed wording pending
+j_ab,judgment,pre-X equals surviving human,1,7,stronger same-person endorsement,A10 only,concept verified; exact deployed wording pending
+j_ac,judgment,pre-X equals generated cat,1,7,stronger same-person endorsement,A10 only,concept verified; exact deployed wording pending
+j_bc,judgment,surviving human equals generated cat,1,7,stronger same-person endorsement,A10 only,concept verified; exact deployed wording pending
+j_excl,judgment,identity exclusivity,1,7,stronger exclusivity endorsement,A10 only,concept verified; exact deployed wording pending
+

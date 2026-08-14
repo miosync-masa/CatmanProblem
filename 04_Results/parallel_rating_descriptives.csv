@@ -1,0 +1,5 @@
+item,item_label,n,mean,sd,ci95_low,ci95_high,median
+j_ab,Pre-X = surviving human,49,5.265306,2.378511,4.582118,5.948494,7.000000
+j_ac,Pre-X = generated cat,49,2.612245,1.591859,2.155010,3.069480,2.000000
+j_bc,Surviving human = generated cat,49,2.653061,1.521389,2.216067,3.090055,3.000000
+j_excl,Identity exclusivity,49,5.163265,1.874688,4.624792,5.701739,6.000000

@@ -1,0 +1,11 @@
+check,value
+response_rows_raw,5704
+unique_participants_raw,99
+arm_sessions_raw,101
+participants_in_both_arms,2
+duplicate_response_keys,0
+missing_response_values,0
+out_of_range_values,0
+conditions,10
+judgment_included_n,49
+manipulation_included_n,50

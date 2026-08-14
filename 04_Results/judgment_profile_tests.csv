@@ -1,0 +1,7 @@
+n,n_queries,statistic,permutations,exceedances,p_permutation,condition_id,contrast,p_fdr_six_profiles,interpretation
+49,5,1.562182,100000,0,0.000010,C02,Body,0.000060,query-dependent profile
+49,5,1.190837,100000,30,0.000310,C03,Memory,0.000930,query-dependent profile
+49,5,0.223740,100000,21606,0.216068,C04,Function,0.259281,no detected profile heterogeneity
+49,5,0.510954,100000,842,0.008430,C05,Self-ID uncertain,0.016080,query-dependent profile
+49,5,0.049479,100000,64031,0.640314,C06,Transition,0.640314,no detected profile heterogeneity
+49,5,0.662557,100000,1071,0.010720,A09,Self-denial anchor,0.016080,query-dependent profile
