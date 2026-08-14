@@ -70,8 +70,3 @@ This regenerates the analysis-ready datasets, effect-size tables, 95% confidence
 ## De-identification
 
 Original platform identifiers were replaced with sequential study IDs (`P001`–`P099`). The mapping is not included. Exact timestamps, start/end times, user-agent strings, and unreviewed free-text responses were removed. Exact age was converted to five-year/ten-year age bands for the public session table.
-
-## Public-release status
-
-This package is suitable for private OSF staging and statistical review. Before making the OSF project public, add the exact deployed study source, confirm endpoint labels and verbatim item wording, choose a license, and replace this note with the final OSF DOI/version date.
-
